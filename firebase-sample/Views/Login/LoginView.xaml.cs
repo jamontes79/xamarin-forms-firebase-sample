@@ -10,12 +10,8 @@ namespace firebasesample.Views.Login
         LoginViewModel viewModel;
         public LoginView()
         {
-            try
-            {
-                InitializeComponent();
-            }catch(Exception e){
-                String a = "";
-            }
+             InitializeComponent();
+           
         }
 
         protected override void OnAppearing()

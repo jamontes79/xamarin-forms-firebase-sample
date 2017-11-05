@@ -2,7 +2,10 @@
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Acr.UserDialogs;
+using firebasesample.Services.FirebaseAuth;
 using firebasesample.ViewModels.Base;
+using firebasesample.ViewModels.Main;
+using Xamarin.Forms;
 
 namespace firebasesample.ViewModels.Login
 {
@@ -14,9 +17,12 @@ namespace firebasesample.ViewModels.Login
         private String _password;
         private IUserDialogs _userDialogService;
 
+        private IFirebaseAuthService _firebaseService;
+
         public SignUpViewModel(IUserDialogs userDialogsService)
         {
             _userDialogService = userDialogsService;
+            _firebaseService = DependencyService.Get<IFirebaseAuthService>();
 
         }
 
@@ -34,7 +40,14 @@ namespace firebasesample.ViewModels.Login
         }
         private async Task SignUpCommandExecute()
         {
-            _userDialogService.Toast("Opción no implementada");
+            if (await _firebaseService.SignUp(Username, Password))
+            {
+                await NavigationService.NavigateToAsync<MainViewModel>();
+            }
+            else
+            {
+                _userDialogService.Toast("El Usuario introducido no es válido");
+            }
 
         }
         public String Username

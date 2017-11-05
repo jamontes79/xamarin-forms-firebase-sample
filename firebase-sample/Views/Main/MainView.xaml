@@ -1,5 +1,10 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="firebasesample.Views.Main.MainView">
 	<ContentPage.Content>
+        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+        <Label Text="Welcome Firebase-Sample. You are login!" VerticalOptions="Center" HorizontalOptions="Center" />
+
+        <Button Text="Logout" Command="{Binding LogoutCommand}" BackgroundColor="#1FBED6" HorizontalOptions="Fill" TextColor="White" />
+        </StackLayout>
 	</ContentPage.Content>
 </ContentPage>

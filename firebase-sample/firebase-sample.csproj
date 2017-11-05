@@ -69,6 +69,7 @@
     <Compile Include="Helpers\AsyncLock.cs" />
     <Compile Include="Helpers\BoolResources.cs" />
     <Compile Include="Helpers\DoubleResources.cs" />
+    <Compile Include="Services\FirebaseAuth\IFirebaseAuthService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
@@ -112,6 +113,7 @@
     <Folder Include="ViewModels\Login\" />
     <Folder Include="ViewModels\Main\" />
     <Folder Include="Helpers\" />
+    <Folder Include="Services\FirebaseAuth\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.4.0.38779\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.4.0.38779\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" />

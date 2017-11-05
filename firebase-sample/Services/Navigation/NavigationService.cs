@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using firebasesample.Services.FirebaseAuth;
 using firebasesample.ViewModels.Base;
 using firebasesample.ViewModels.Login;
 using firebasesample.ViewModels.Main;
@@ -31,7 +32,14 @@ namespace firebasesample.Services.Navigation
 
         public Task InitializeAsync()
         {
-            return NavigateToAsync<LoginViewModel>();
+            var _firebaseService = DependencyService.Get<IFirebaseAuthService>();
+            if (_firebaseService.IsUserSigned())
+            {
+                return NavigateToAsync<MainViewModel>();
+            }
+            else{
+                return NavigateToAsync<LoginViewModel>(); 
+            }
         }
 
         public Task NavigateToAsync<TViewModel>() where TViewModel : ViewModelBase

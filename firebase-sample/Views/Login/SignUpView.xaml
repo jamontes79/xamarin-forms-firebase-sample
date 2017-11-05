@@ -37,7 +37,7 @@
 
                 <Grid Grid.Row="3" HorizontalOptions="Fill" Padding="5">
                     
-                    <Entry Placeholder="Password" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black"   Text="{Binding Password}"/>
+                    <Entry Placeholder="Password"   IsPassword="true" BackgroundColor="Transparent" HorizontalOptions="Fill" TextColor="Black"   Text="{Binding Password}"/>
                 </Grid>
                 <BoxView HeightRequest="1" Grid.Row="3" HorizontalOptions="Fill" BackgroundColor="White" VerticalOptions="End"/>
 

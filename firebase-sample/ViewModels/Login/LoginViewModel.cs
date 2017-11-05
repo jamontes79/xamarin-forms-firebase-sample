@@ -2,8 +2,10 @@
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Acr.UserDialogs;
+using firebasesample.Services.FirebaseAuth;
 using firebasesample.ViewModels.Base;
 using firebasesample.ViewModels.Main;
+using Xamarin.Forms;
 
 namespace firebasesample.ViewModels.Login
 {
@@ -12,15 +14,24 @@ namespace firebasesample.ViewModels.Login
         private ICommand _signUpCommand;
         private ICommand _loginCommand;
         private ICommand _loginGoogleCommand;
-
+       
   
         private String _username;
         private String _password;
+
         private IUserDialogs _userDialogService;
+
+        private IFirebaseAuthService _firebaseService;
 
         public LoginViewModel(IUserDialogs userDialogsService)
         {
             _userDialogService = userDialogsService;
+            _firebaseService = DependencyService.Get<IFirebaseAuthService>();
+            MessagingCenter.Subscribe<String, String>(this, _firebaseService.getAuthKey(), (sender, args) =>
+            {
+                LoginGoogle(args);
+
+            });
            
         }
 
@@ -67,7 +78,14 @@ namespace firebasesample.ViewModels.Login
 
         private async Task LoginCommandExecute()
         {
-            await NavigationService.NavigateToAsync<MainViewModel>();
+            if (await _firebaseService.SignIn(Username, Password))
+            {
+                await NavigationService.NavigateToAsync<MainViewModel>();
+            }
+            else
+            {
+                _userDialogService.Toast("Usuario o contraseña incorrectos");
+            }
           
         }
 
@@ -79,9 +97,17 @@ namespace firebasesample.ViewModels.Login
 
         private async Task LoginGoogleCommandExecute()
         {
-            _userDialogService.Toast("Opción no implementada");
+             _firebaseService.SignInWithGoogle();
 
         }
 
+        private async Task LoginGoogle(String token)
+        {
+            if (await _firebaseService.SignInWithGoogle(token))
+            {
+                await NavigationService.NavigateToAsync<MainViewModel>();
+            }
+
+        }
     }
 }
