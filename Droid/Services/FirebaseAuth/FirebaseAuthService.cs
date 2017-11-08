@@ -76,9 +76,6 @@ namespace firebasesample.Droid.Services.FirebaseAuth
             }
             catch (Exception ex)
             {
-                // Sign-up failed, display a message to the user
-                // If sign in succeeds, the AuthState event handler will
-                //  be notified and logic to handle the signed in user can happen there
                 return false;
             }
         }
