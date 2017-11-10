@@ -201,19 +201,7 @@ namespace firebasesample.Droid.Activities
         }
 
 
-        public static void SignOut()
-        {
-            /*if (mGoogleApiClient.IsConnected)
-            {
-                PlusClass.AccountApi.ClearDefaultAccount(mGoogleApiClient);
-                mGoogleApiClient.Disconnect();
-
-                if (_logOut != null)
-                    _logOut.SetResult(mAuth);
-            }*/
-        }
-
-
+       
 
     }
 
