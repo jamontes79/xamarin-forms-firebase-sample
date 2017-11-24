@@ -33,6 +33,7 @@ namespace firebasesample.Services.Navigation
         public Task InitializeAsync()
         {
             var _firebaseService = DependencyService.Get<IFirebaseAuthService>();
+
             if (_firebaseService.IsUserSigned())
             {
                 return NavigateToAsync<MainViewModel>();
