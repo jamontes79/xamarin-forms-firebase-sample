@@ -12,5 +12,6 @@ namespace firebasesample.Services.FirebaseAuth
         void SignInWithGoogle();
         Task<bool> SignInWithGoogle(String token);
         Task<bool> Logout();
+        String GetUserId();
     }
 }

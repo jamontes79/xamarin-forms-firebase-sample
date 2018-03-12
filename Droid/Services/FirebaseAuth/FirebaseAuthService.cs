@@ -83,5 +83,11 @@ namespace firebasesample.Droid.Services.FirebaseAuth
         {
             return KEY_AUTH;
         }
+
+        public string GetUserId()
+        {
+            var user = Firebase.Auth.FirebaseAuth.GetInstance(MainActivity.app).CurrentUser;
+            return user.Uid;
+        }
     }
 }

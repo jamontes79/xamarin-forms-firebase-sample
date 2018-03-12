@@ -38,6 +38,7 @@ namespace firebasesample.Droid
             var options = new FirebaseOptions.Builder()
             .SetApplicationId("1:2485447395:android:1bf7180db061f771")
             .SetApiKey("AIzaSyBdszK9ZCwbukS8Qb1iZ_LCXVq2os-KYJA")
+            .SetDatabaseUrl("https://fir-sample-d9469.firebaseio.com")
             .Build();
 
 
