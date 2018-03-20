@@ -259,7 +259,8 @@ namespace firebasesample.iOS.Services.FirebaseAuth
 
         public string GetUserId()
         {
-            throw new NotImplementedException();
+            var user = Auth.DefaultInstance.CurrentUser;
+            return user.Uid;
         }
     }
 }
