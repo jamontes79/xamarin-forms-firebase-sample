@@ -46,12 +46,9 @@ namespace firebasesample.Droid.Activities
                                     .RequestProfile()
                                     .Build();
 
-            String token1 = "2485447395-g5sdqpgfdjklgo2f1ir84s0cedsdqgv1.apps.googleusercontent.com";
-            String token2 = "2485447395-rd5andaqok9itd0pkenah7jml4dioica.apps.googleusercontent.com";
-            String token3 = "2485447395-h5buvvf05c44j54cmlg3qcnrndi0fd99.apps.googleusercontent.com";
+            String token = "2485447395-g5sdqpgfdjklgo2f1ir84s0cedsdqgv1.apps.googleusercontent.com";
             GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DefaultSignIn)
-                                                             .RequestIdToken(token2)
-               .RequestEmail()
+                                                             .RequestIdToken(token)
                 .Build();
 
             mGoogleApiClient = new GoogleApiClient.Builder(this)
