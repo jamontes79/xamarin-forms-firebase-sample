@@ -25,7 +25,7 @@ namespace firebasesample.iOS.Services.FirebaseAuth
 
         public IntPtr Handle => throw new NotImplementedException();
 
-        
+
 
         private void HandleAuthResultHandlerGoogleSignin(User user, NSError error)
         {
@@ -62,7 +62,7 @@ namespace firebasesample.iOS.Services.FirebaseAuth
             tokenSource.Cancel();
         }
 
-        private void HandleAuthResultHandlerSignUp(User user, Foundation.NSError error)
+        private void HandleAuthResultHandlerSignUp(AuthDataResult data, Foundation.NSError error)
         {
             if (error != null)
             {
@@ -93,7 +93,7 @@ namespace firebasesample.iOS.Services.FirebaseAuth
             tokenSource.Cancel();
         }
 
-        private void HandleAuthResultLoginHandler(User user, Foundation.NSError error)
+        private void HandleAuthResultLoginHandler(AuthDataResult data, Foundation.NSError error)
         {
             if (error != null)
             {
@@ -168,7 +168,7 @@ namespace firebasesample.iOS.Services.FirebaseAuth
         public async Task<bool> SignIn(string email, string password)
         {
             
-            Auth.DefaultInstance.SignIn(email, password, HandleAuthResultLoginHandler);
+            Auth.DefaultInstance.SignInWithPassword(email, password, HandleAuthResultLoginHandler);
             token = tokenSource.Token;
             t = Task.Factory.StartNew(async () =>
             {
@@ -212,7 +212,7 @@ namespace firebasesample.iOS.Services.FirebaseAuth
         {
             String[] tokens = tokenId.Split(new string[] { "###" }, StringSplitOptions.None);
             var credential = GoogleAuthProvider.GetCredential(tokens[0], tokens[1]);
-            Auth.DefaultInstance.SignIn(credential, HandleAuthResultHandlerGoogleSignin);
+            Auth.DefaultInstance.SignInWithCredential(credential, HandleAuthResultHandlerGoogleSignin);
             token = tokenSource.Token;
             t = Task.Factory.StartNew(async () =>
             {
